@@ -1,1 +1,1 @@
-# HTML5 / Vanilla JS Template
+# NINJA HTML5 Game
