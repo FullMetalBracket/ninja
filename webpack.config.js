@@ -1,5 +1,5 @@
 const path = require('path');
-const PUBLIC_DIR = path.resolve(__dirname, 'public');
+const PUBLIC_DIR = path.resolve(__dirname, 'docs');
 const BUILD_DIR = path.resolve(__dirname, 'build');
 
 module.exports = {
@@ -16,6 +16,9 @@ module.exports = {
     path: PUBLIC_DIR,
     filename: 'bundle.js'
   }, devServer: {
-     open: '/index.html'
+     open: 'index.html',
+     static: {
+      directory: path.join(__dirname, 'docs'),
+    }
     }
 };

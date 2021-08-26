@@ -1,0 +1,2 @@
+console.info("app is running ...");
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYnVuZGxlLmpzIiwibWFwcGluZ3MiOiJBQUFBQSxRQUFRQyxLQUFLIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vanNib2lsZXJwbGF0ZS8uL3NyYy9pbmRleC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmluZm8oJ2FwcCBpcyBydW5uaW5nIC4uLicpIl0sIm5hbWVzIjpbImNvbnNvbGUiLCJpbmZvIl0sInNvdXJjZVJvb3QiOiIifQ==
