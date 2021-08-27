@@ -1,19 +1,26 @@
 console.info('ninja is running ...')
 
+let x =0,y=40;
+
 const image = new Image();
 image.src = 'imgs/nanonaut.png';
+
+const canvas = document.createElement('canvas');
+canvas.width = 800;
+canvas.height = 600;
+document.body.appendChild(canvas);
+
+const c = canvas.getContext('2d');
 
 window.addEventListener('load',start);
 
 function start(){
-    const canvas = document.createElement('canvas');
-    canvas.width = 800;
-    canvas.height = 600;
-    document.body.appendChild(canvas);
+    window.requestAnimationFrame(loop);
+}
 
-    const c = canvas.getContext('2d');
-    c.fillStyle = 'green';
-    c.fillRect(10,10,30,30); 
-    document.body.appendChild(canvas);
-    c.drawImage(image,20,40);
+const loop = () => {
+    c.clearRect(0,0,800,600);
+    c.drawImage(image,x,y);
+    x++;
+    window.requestAnimationFrame(loop);
 }
