@@ -1,26 +1,42 @@
-console.info('ninja is running ...')
+console.info('game is running ...')
 
-let x =0,y=40;
+// CONSTANTS
+const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 600;
+const NANONAUT_WIDTH = 181;
+const NANONAUT_HEIGHT = 229;
+const GROUND_Y = 540;
 
-const image = new Image();
-image.src = 'imgs/nanonaut.png';
-
+// SETUP
 const canvas = document.createElement('canvas');
-canvas.width = 800;
-canvas.height = 600;
+const c = canvas.getContext('2d');
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
 document.body.appendChild(canvas);
 
-const c = canvas.getContext('2d');
+const nanonautImage = new Image();
+nanonautImage.src = 'imgs/nanonaut.png';
+const nanonautX = 50, nanonautY = 40;
 
 window.addEventListener('load',start);
 
 function start(){
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(mainLoop);
 }
 
-const loop = () => {
-    c.clearRect(0,0,800,600);
-    c.drawImage(image,x,y);
-    x++;
-    window.requestAnimationFrame(loop);
+// MAIN LOOP
+const mainLoop = () => {
+    update();draw();
+    window.requestAnimationFrame(mainLoop);
+}
+
+// PLAYER INPUT
+
+// UPDATING
+function update(){}
+
+// DRAWING
+function draw(){
+    c.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+    c.drawImage(nanonautImage,nanonautX,nanonautY);
 }
