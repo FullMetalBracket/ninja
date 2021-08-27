@@ -33,7 +33,9 @@ const mainLoop = () => {
 // PLAYER INPUT
 
 // UPDATING
-function update(){}
+function update(){
+    
+}
 
 // DRAWING
 function draw(){
