@@ -6,17 +6,21 @@ const CANVAS_HEIGHT = 600;
 const NANONAUT_WIDTH = 181;
 const NANONAUT_HEIGHT = 229;
 const GROUND_Y = 540;
+const NANONAUT_Y_ACCELERATION = 1;
 
 // SETUP
 const canvas = document.createElement('canvas');
 const c = canvas.getContext('2d');
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
+let nanonautX = 50, nanonautY = 40, nanonautYSpeed = 0;
 document.body.appendChild(canvas);
 
 const nanonautImage = new Image();
 nanonautImage.src = 'imgs/nanonaut.png';
-const nanonautX = 50, nanonautY = 40;
+
+const backgroundImage = new Image();
+backgroundImage.src = 'imgs/background.png';
 
 window.addEventListener('load',start);
 
@@ -34,7 +38,13 @@ const mainLoop = () => {
 
 // UPDATING
 function update(){
-
+    nanonautY+=nanonautYSpeed;
+    nanonautYSpeed += NANONAUT_Y_ACCELERATION;
+    if(nanonautY > (GROUND_Y - NANONAUT_HEIGHT)) 
+    {   
+        nanonautY= GROUND_Y - NANONAUT_HEIGHT;
+        nanonautYSpeed =0;
+    }
 }
 
 // DRAWING
@@ -43,6 +53,8 @@ function draw(){
     // Draw the sky
     c.fillStyle = "LightSkyBlue";
     c.fillRect(0,0, CANVAS_WIDTH, GROUND_Y - 40);
+    
+    c.drawImage(backgroundImage,0,-210);
     
     // Draw the ground.
     c.fillStyle = "ForestGreen";
