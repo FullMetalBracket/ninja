@@ -34,11 +34,19 @@ const mainLoop = () => {
 
 // UPDATING
 function update(){
-    
+
 }
 
 // DRAWING
 function draw(){
-    c.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+    // c.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+    // Draw the sky
+    c.fillStyle = "LightSkyBlue";
+    c.fillRect(0,0, CANVAS_WIDTH, GROUND_Y - 40);
+    
+    // Draw the ground.
+    c.fillStyle = "ForestGreen";
+    c.fillRect(0, GROUND_Y - 40, CANVAS_WIDTH, CANVAS_HEIGHT - GROUND_Y + 40)
+
     c.drawImage(nanonautImage,nanonautX,nanonautY);
 }
