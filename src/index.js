@@ -7,6 +7,7 @@ const NANONAUT_WIDTH = 181;
 const NANONAUT_HEIGHT = 229;
 const GROUND_Y = 540;
 const NANONAUT_Y_ACCELERATION = 1;
+const SPACE_KEYCODE = 32;
 
 // SETUP
 const canvas = document.createElement('canvas');
@@ -14,6 +15,7 @@ const c = canvas.getContext('2d');
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 let nanonautX = 50, nanonautY = 40, nanonautYSpeed = 0;
+let spaceKeyIsPressed = false;
 document.body.appendChild(canvas);
 
 const nanonautImage = new Image();
@@ -22,6 +24,7 @@ nanonautImage.src = './imgs/Nanonaut.png';
 const backgroundImage = new Image();
 backgroundImage.src = './imgs/background.png';
 
+window.addEventListener('keydown', onkeydown);
 window.addEventListener('load',start);
 
 function start(){
@@ -62,3 +65,9 @@ function draw(){
 
     c.drawImage(nanonautImage,nanonautX,nanonautY);
 }
+
+// FUNCTIONS
+function onKeyDown(event){
+    if(event.keyCode === SPACE_KEYCODE)spaceKeyIsPressed = true;
+}
+      
