@@ -17,10 +17,10 @@ let nanonautX = 50, nanonautY = 40, nanonautYSpeed = 0;
 document.body.appendChild(canvas);
 
 const nanonautImage = new Image();
-nanonautImage.src = 'imgs/nanonaut.png';
+nanonautImage.src = './imgs/nanonaut.png';
 
 const backgroundImage = new Image();
-backgroundImage.src = 'imgs/background.png';
+backgroundImage.src = './imgs/background.png';
 
 window.addEventListener('load',start);
 
