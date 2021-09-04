@@ -19,7 +19,7 @@ let spaceKeyIsPressed = false;
 document.body.appendChild(canvas);
 
 const nanonautImage = new Image();
-nanonautImage.src = './imgs/Nanonaut.png';
+nanonautImage.src = './imgs/nanont.png';
 
 const backgroundImage = new Image();
 backgroundImage.src = './imgs/background.png';
