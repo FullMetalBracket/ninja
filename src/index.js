@@ -8,13 +8,15 @@ const NANONAUT_HEIGHT = 229;
 const GROUND_Y = 540;
 const NANONAUT_Y_ACCELERATION = 1;
 const SPACE_KEYCODE = 32;
+const NANONAUT_JUMP_SPEED = 20;
 
 // SETUP
 const canvas = document.createElement('canvas');
 const c = canvas.getContext('2d');
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
-let nanonautX = 50, nanonautY = 40, nanonautYSpeed = 0;
+let nanonautX = 50, nanonautY = 40, 
+    nanonautYSpeed = 0, nanonautIsInAir = false;
 let spaceKeyIsPressed = false;
 document.body.appendChild(canvas);
 
@@ -24,7 +26,8 @@ nanonautImage.src = './imgs/nanont.png';
 const backgroundImage = new Image();
 backgroundImage.src = './imgs/background.png';
 
-window.addEventListener('keydown', onkeydown);
+window.addEventListener('keydown', onKeyDown);
+window.addEventListener('keyup', onKeyUp);
 window.addEventListener('load',start);
 
 function start(){
@@ -41,12 +44,18 @@ const mainLoop = () => {
 
 // UPDATING
 function update(){
+    if(spaceKeyIsPressed && !nanonautIsInTheAir) 
+    {   
+        nanonautYSpeed = -NANONAUT_JUMP_SPEED;
+        nanonautIsInTheAir = true;
+    }
     nanonautY+=nanonautYSpeed;
     nanonautYSpeed += NANONAUT_Y_ACCELERATION;
     if(nanonautY > (GROUND_Y - NANONAUT_HEIGHT)) 
     {   
         nanonautY= GROUND_Y - NANONAUT_HEIGHT;
         nanonautYSpeed =0;
+        nanonautIsInTheAir = false;
     }
 }
 
@@ -70,4 +79,9 @@ function draw(){
 function onKeyDown(event){
     if(event.keyCode === SPACE_KEYCODE)spaceKeyIsPressed = true;
 }
-      
+
+function onKeyUp(event){
+    if(event.keyCode === SPACE_KEYCODE){
+        spaceKeyIsPressed = false;
+    }
+}
