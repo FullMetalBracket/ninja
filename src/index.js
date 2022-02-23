@@ -9,6 +9,7 @@ const GROUND_Y = 540;
 const NANONAUT_Y_ACCELERATION = 1;
 const SPACE_KEYCODE = 32;
 const NANONAUT_JUMP_SPEED = 20;
+const NANONAUT_X_SPEED = 5;
 
 // SETUP
 const canvas = document.createElement('canvas');
@@ -18,6 +19,8 @@ canvas.height = CANVAS_HEIGHT;
 let nanonautX = 50, nanonautY = 40, 
     nanonautYSpeed = 0, nanonautIsInAir = false;
 let spaceKeyIsPressed = false;
+let cameraX = 0, cameraY = 0;
+
 document.body.appendChild(canvas);
 
 const nanonautImage = new Image();
@@ -44,13 +47,18 @@ const mainLoop = () => {
 
 // UPDATING
 function update(){
+
+    nanonautX += NANONAUT_X_SPEED;
+
     if(spaceKeyIsPressed && !nanonautIsInTheAir) 
     {   
         nanonautYSpeed = -NANONAUT_JUMP_SPEED;
         nanonautIsInTheAir = true;
     }
+
     nanonautY+=nanonautYSpeed;
     nanonautYSpeed += NANONAUT_Y_ACCELERATION;
+
     if(nanonautY > (GROUND_Y - NANONAUT_HEIGHT)) 
     {   
         nanonautY= GROUND_Y - NANONAUT_HEIGHT;
@@ -66,13 +74,18 @@ function draw(){
     c.fillStyle = "LightSkyBlue";
     c.fillRect(0,0, CANVAS_WIDTH, GROUND_Y - 40);
     
-    c.drawImage(backgroundImage,0,-210);
+    // move background with camera
+    c.drawImage(backgroundImage, 0 - cameraX, -210);
     
     // Draw the ground.
     c.fillStyle = "ForestGreen";
     c.fillRect(0, GROUND_Y - 40, CANVAS_WIDTH, CANVAS_HEIGHT - GROUND_Y + 40)
 
-    c.drawImage(nanonautImage,nanonautX,nanonautY);
+    //transform world space into screen space
+    c.drawImage(nanonautImage, nanonautX - cameraX, nanonautY - cameraY);
+
+    // Update camera - keep 150 pixels left of Nanonaut
+    cameraX = nanonautX - 150;
 }
 
 // FUNCTIONS
