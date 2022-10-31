@@ -5,8 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ninja Warrior</title>
+   
     <script defer src='./bundle.js'></script>
+    <style>
+            .sprite{position:absolute;
+                width:224px;height:224px;
+                top:20px;
+                background: url(/imgs/yellowbomber.png);
+                animation-name: sprite; 
+  animation-duration: 2s;
+  animation-timing-function: steps(9);
+  animation-iteration-count: infinite;
+  transform: translate(-25%, -25%) scale(0.5);
+            }
+            @keyframes sprite {
+  from { background-position-y: 0px;left:700px }
+  to { background-position-y: -2016px;left:-80px; }
+}
+    </style>
 </head>
-<body>
+<body> 
+    <!---->
+    <div class="sprite" alt="Yellow Bomber"></div>
 </body>
 </html>
